@@ -1,4 +1,4 @@
---Readme document for *author*--
+--Readme document for Eric Chang--
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
