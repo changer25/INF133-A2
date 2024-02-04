@@ -25,12 +25,15 @@ function parseTweets(runkeeper_tweets) {
 
 	    // Initialize counters for each category
 		let completedEventsCount = 0, liveEventsCount = 0, achievementsCount = 0, miscellaneousCount = 0;
-
+		let writtenCount = 0; // Counter for tweets with user-written text
 		// Categorize each tweet and update counters
 		tweet_array.forEach(tweet => {
 			switch (tweet.source) {
 				case 'completed_event':
 					completedEventsCount++;
+					if (tweet.written) {
+						writtenCount++; // Increment if the tweet has user-written text
+					}
 					break;
 				case 'live_event':
 					liveEventsCount++;
@@ -50,7 +53,12 @@ function parseTweets(runkeeper_tweets) {
     document.getElementById('lastDate').innerText = latestDate;
 
     // Update the DOM with counts for each category
-    document.querySelector('.completedEvents').innerText = completedEventsCount;
+    let completedEventsElements = document.querySelectorAll('.completedEvents');
+
+	// For completed events, iterate over each element and update its text content
+	completedEventsElements.forEach(function(element) {
+		element.innerText = completedEventsCount;
+	});
     document.querySelector('.liveEvents').innerText = liveEventsCount;
     document.querySelector('.achievements').innerText = achievementsCount;
     document.querySelector('.miscellaneous').innerText = miscellaneousCount;
@@ -61,6 +69,11 @@ function parseTweets(runkeeper_tweets) {
     document.querySelector('.liveEventsPct').innerText = ((liveEventsCount / totalTweets) * 100).toFixed(2) + '%';
     document.querySelector('.achievementsPct').innerText = ((achievementsCount / totalTweets) * 100).toFixed(2) + '%';
     document.querySelector('.miscellaneousPct').innerText = ((miscellaneousCount / totalTweets) * 100).toFixed(2) + '%';
+
+    // Update the DOM for the percentage of written tweets
+    let writtenPct = ((writtenCount / completedEventsCount) * 100).toFixed(2); // Calculate the percentage of written tweets among completed events
+	document.querySelector('.written').innerText = writtenCount;
+    document.querySelector('.writtenPct').innerText = writtenPct + '%'; // Update the DOM with the calculated percentage
 }
 
 // Wait for the DOM to load

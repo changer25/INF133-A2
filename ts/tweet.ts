@@ -21,17 +21,25 @@ class Tweet {
     }
 
     //returns a boolean, whether the text includes any content written by the person tweeting.
-    get written():boolean {
-        //TODO: identify whether the tweet is written
-        return false;
+    get written(): boolean {
+        // Check if the tweet includes "Check it out!" or "Just completed a"
+        return !(this.text.includes("Check it out!") && this.text.includes("Just completed a"));
     }
 
     get writtenText():string {
         if(!this.written) {
             return "";
         }
-        //TODO: parse the written text from the tweet
-        return "";
+
+
+        // Start with the text without the hashtag and the link, as obtained in `written`
+        let textWithoutHashtag = this.text.replace("#RunKeeper", "");
+        let lastSpaceIndex = textWithoutHashtag.lastIndexOf(" ");
+        let textWithoutLink = textWithoutHashtag.substring(0, lastSpaceIndex);
+
+
+        return textWithoutLink;        
+
     }
 
     get activityType():string {
