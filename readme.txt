@@ -20,7 +20,7 @@
     - https://www.w3schools.com/js/
     - https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
     - https://inf133.markbaldw.in/slides/slides.html?file=wk4.html
-
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
