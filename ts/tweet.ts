@@ -46,15 +46,24 @@ class Tweet {
         if (this.source != 'completed_event') {
             return "unknown";
         }
-        //TODO: parse the activity type from the text of the tweet
-        return "";
+        const match = this.text.match(/Just completed a [\d.]+ (km|mi) (\w+)/);
+        return match ? match[2].toLowerCase() : "unknown";
+ 
     }
 
     get distance():number {
         if(this.source != 'completed_event') {
             return 0;
         }
-        //TODO: prase the distance from the text of the tweet
+        const match = this.text.match(/Just completed a ([\d.]+) (km|mi)/);
+        if (match) {
+            let distance = parseFloat(match[1]);
+            const unit = match[2];
+            if (unit === 'km') {
+                distance *= 0.621371; // Convert to miles
+            }
+            return distance;
+        }
         return 0;
     }
 
