@@ -17,7 +17,6 @@ function parseTweets(runkeeper_tweets) {
 }
 
 
-
 function addEventHandlerForSearch() {
     const searchCount = document.getElementById('searchCount');
     const searchText = document.getElementById('searchText');

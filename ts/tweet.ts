@@ -26,22 +26,19 @@ class Tweet {
         return !((this.text.includes("Check it out!") || this.text.includes("TomTom MySports Watch")) && (this.text.includes("Just completed a") || this.text.includes("Just posted a")));
     }
 
+
+    // returns the extracted text of tweet if it is written by a person
     get writtenText():string {
         if(!this.written) {
             return "";
         }
 
-
-        // Start with the text without the hashtag and the link, as obtained in `written`
-        // let textWithoutHashtag = this.text.replace("#RunKeeper", "");
-        // let lastSpaceIndex = textWithoutHashtag.lastIndexOf(" ");
-        // let textWithoutLink = textWithoutHashtag.substring(0, lastSpaceIndex);
-
-
         return this.text;        
 
     }
 
+
+    // returns the type of activitiy (given that it is a completed event)
     get activityType():string {
         if (this.source != 'completed_event') {
             return "unknown";
@@ -51,6 +48,8 @@ class Tweet {
  
     }
 
+    
+    // returns distance of completed activity completed
     get distance():number {
         if(this.source != 'completed_event') {
             return 0;
@@ -67,8 +66,10 @@ class Tweet {
         return 0;
     }
 
+
+    // returns a table row which summarizes the tweet with a clickable link to the RunKeeper activity
     getHTMLTableRow(rowNumber:number):string {
-        //TODO: return a table row which summarizes the tweet with a clickable link to the RunKeeper activity
+        //TODO: 
         const activityType = this.activityType === "unknown" ? "Not specified" : this.activityType.charAt(0).toUpperCase() + this.activityType.slice(1);
         let tweetText = this.writtenText; // The text content written by the user
 

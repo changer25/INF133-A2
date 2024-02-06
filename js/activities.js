@@ -59,9 +59,9 @@ function extractActionVerbsAndDistances(runkeeper_tweets) {
 
 
 	// Take the top 3 activities
-	const firstMost = topThreeActivities[0] ? topThreeActivities[0][0] : 'N/A'; // Default to 'N/A' if there's no activity
-	const secondMost = topThreeActivities[1] ? topThreeActivities[1][0] : 'N/A'; // Default to 'N/A' if there's no second activity
-	const thirdMost = topThreeActivities[2] ? topThreeActivities[2][0] : 'N/A'; // Default to 'N/A' if there's no third activity
+	const firstMost = topThreeActivities[0] ? topThreeActivities[0][0] : 'N/A'; 
+	const secondMost = topThreeActivities[1] ? topThreeActivities[1][0] : 'N/A'; 
+	const thirdMost = topThreeActivities[2] ? topThreeActivities[2][0] : 'N/A'; 
 
 	document.getElementById('firstMost').textContent = firstMost;
 	document.getElementById('secondMost').textContent = secondMost;
@@ -193,7 +193,7 @@ function parseTweets(runkeeper_tweets) {
     vegaEmbed('#activityVis', activity_vis_spec, {actions: false});
 
 	//TODO: create the visualizations which group the three most-tweeted activities by the day of the week.
-	//Use those visualizations to answer the questions about which activities tended to be longest and when.
+
     let individualPlotSpec = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "description": "Individual distances by day of the week for the three most tweeted-about activities",
