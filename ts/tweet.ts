@@ -9,7 +9,7 @@ class Tweet {
 
 	//returns either 'live_event', 'achievement', 'completed_event', or 'miscellaneous'
     get source(): string {
-        if (this.text.startsWith("Just completed") || this.text.includes("Check it out")) {
+        if (this.text.startsWith("Just completed") || this.text.includes("Check it out") || this.text.startsWith("Just posted") || this.text.includes("TomTom MySports Watch") ) {
             return 'completed_event';
         } else if (this.text.includes("Live") || this.text.includes("right now")) {
             return 'live_event';

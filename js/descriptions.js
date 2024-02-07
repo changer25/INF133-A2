@@ -34,7 +34,7 @@ function addEventHandlerForSearch() {
             updateTweetTable(tweetTable, filteredTweets);
 
             searchCount.textContent = filteredTweets.length;
-        }, 300); // Adjust debounce delay as needed
+        }, 300); 
     });
 }
 function updateTweetTable(tableElement, tweets) {
